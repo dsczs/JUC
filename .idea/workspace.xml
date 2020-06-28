@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ef4e987-c45b-4aba-a1ba-adaf5c3c095d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/smartfox_info.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_012_Volatile/T04_VolatileNotSync.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_012_Volatile/T04_VolatileNotSync.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_012_Volatile/T05_VolatileVsSync.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_012_Volatile/T05_VolatileVsSync.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_018_00_AtomicXXX/T01_AtomicInteger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_018_00_AtomicXXX/T01_AtomicInteger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T01_ReentrantLock1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T01_ReentrantLock1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T02_ReentrantLock2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T02_ReentrantLock2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T03_ReentrantLock3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T03_ReentrantLock3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T04_ReentrantLock4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T04_ReentrantLock4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T05_ReentrantLock5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T05_ReentrantLock5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T07_TestCyclicBarrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T07_TestCyclicBarrier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T08_TestPhaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T08_TestPhaser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T09_TestPhaser2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mashibing/juc/c_020/T09_TestPhaser2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +104,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593334177885</updated>
-      <workItem from="1593334179330" duration="936000" />
+      <workItem from="1593334179330" duration="1224000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1593334951955</created>
@@ -106,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593334951955</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1">
+      <created>1593335128689</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593335128689</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,26 +133,26 @@
     <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="249" y="10" key="CommitChangelistDialog2" timestamp="1593334950929">
+    <state x="249" y="10" key="CommitChangelistDialog2" timestamp="1593335127587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593334950929" />
-    <state width="1493" height="203" key="GridCell.Tab.0.bottom" timestamp="1593335002299">
+    <state x="249" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593335127587" />
+    <state width="746" height="203" key="GridCell.Tab.0.bottom" timestamp="1593335141701">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593335002299" />
-    <state width="1493" height="203" key="GridCell.Tab.0.center" timestamp="1593335002299">
+    <state width="746" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593335141701" />
+    <state width="746" height="203" key="GridCell.Tab.0.center" timestamp="1593335141701">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593335002299" />
-    <state width="1493" height="203" key="GridCell.Tab.0.left" timestamp="1593335002299">
+    <state width="746" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593335141701" />
+    <state width="746" height="203" key="GridCell.Tab.0.left" timestamp="1593335141701">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593335002299" />
-    <state width="1493" height="203" key="GridCell.Tab.0.right" timestamp="1593335002299">
+    <state width="746" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593335141701" />
+    <state width="746" height="203" key="GridCell.Tab.0.right" timestamp="1593335141701">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593335002299" />
+    <state width="746" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593335141701" />
     <state width="1493" height="252" key="GridCell.Tab.1.bottom" timestamp="1593334606989">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -163,9 +177,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593334515252" />
-    <state x="361" y="148" key="Vcs.Push.Dialog.v2" timestamp="1593334953150">
+    <state x="361" y="148" key="Vcs.Push.Dialog.v2" timestamp="1593335129888">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="148" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593334953150" />
+    <state x="361" y="148" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593335129888" />
   </component>
 </project>
