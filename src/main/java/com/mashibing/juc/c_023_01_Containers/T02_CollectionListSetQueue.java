@@ -1,6 +1,12 @@
 package com.mashibing.juc.c_023_01_Containers;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
 
 public class T02_CollectionListSetQueue {
     public static void main(String[] args) {

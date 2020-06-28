@@ -1,61 +1,57 @@
 /**
- * Ð´Ê±¸´ÖÆÈÝÆ÷ copy on write
- * ¶àÏß³Ì»·¾³ÏÂ£¬Ð´Ê±Ð§ÂÊµÍ£¬¶ÁÊ±Ð§ÂÊ¸ß
- * ÊÊºÏÐ´ÉÙ¶Á¶àµÄ»·¾³
- * 
- * 
- * 
- * @author ÂíÊ¿±ø
+ * Ð´Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ copy on write
+ * ï¿½ï¿½ï¿½ß³Ì»ï¿½ï¿½ï¿½ï¿½Â£ï¿½Ð´Ê±Ð§ï¿½ÊµÍ£ï¿½ï¿½ï¿½Ê±Ð§ï¿½Ê¸ï¿½
+ * ï¿½Êºï¿½Ð´ï¿½Ù¶ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
+ *
+ * @author ï¿½ï¿½Ê¿ï¿½ï¿½
  */
 package com.mashibing.juc.c_025;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.Vector;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class T02_CopyOnWriteList {
-	public static void main(String[] args) {
-		List<String> lists = 
-				//new ArrayList<>(); //Õâ¸ö»á³ö²¢·¢ÎÊÌâ£¡
-				//new Vector();
-				new CopyOnWriteArrayList<>();
-		Random r = new Random();
-		Thread[] ths = new Thread[100];
-		
-		for(int i=0; i<ths.length; i++) {
-			Runnable task = new Runnable() {
-	
-				@Override
-				public void run() {
-					for(int i=0; i<1000; i++) lists.add("a" + r.nextInt(10000));
-				}
-				
-			};
-			ths[i] = new Thread(task);
-		}
-		
-		
-		runAndComputeTime(ths);
-		
-		System.out.println(lists.size());
-	}
-	
-	static void runAndComputeTime(Thread[] ths) {
-		long s1 = System.currentTimeMillis();
-		Arrays.asList(ths).forEach(t->t.start());
-		Arrays.asList(ths).forEach(t->{
-			try {
-				t.join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		});
-		long s2 = System.currentTimeMillis();
-		System.out.println(s2 - s1);
-		
-	}
+    public static void main(String[] args) {
+        List<String> lists =
+                //new ArrayList<>(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£¡
+                //new Vector();
+                new CopyOnWriteArrayList<>();
+        Random r = new Random();
+        Thread[] ths = new Thread[100];
+
+        for (int i = 0; i < ths.length; i++) {
+            Runnable task = new Runnable() {
+
+                @Override
+                public void run() {
+                    for (int i = 0; i < 1000; i++) lists.add("a" + r.nextInt(10000));
+                }
+
+            };
+            ths[i] = new Thread(task);
+        }
+
+
+        runAndComputeTime(ths);
+
+        System.out.println(lists.size());
+    }
+
+    static void runAndComputeTime(Thread[] ths) {
+        long s1 = System.currentTimeMillis();
+        Arrays.asList(ths).forEach(t -> t.start());
+        Arrays.asList(ths).forEach(t -> {
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        long s2 = System.currentTimeMillis();
+        System.out.println(s2 - s1);
+
+    }
 }
 

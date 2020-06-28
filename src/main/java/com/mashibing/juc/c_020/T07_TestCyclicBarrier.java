@@ -16,19 +16,19 @@ public class T07_TestCyclicBarrier {
             }
         });*/
 
-        for(int i=0; i<100; i++) {
+        for (int i = 0; i < 100; i++) {
 
-                new Thread(()->{
-                    try {
-                        barrier.await();
+            new Thread(() -> {
+                try {
+                    barrier.await();
 
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (BrokenBarrierException e) {
-                        e.printStackTrace();
-                    }
-                }).start();
-            
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
         }
     }
 }

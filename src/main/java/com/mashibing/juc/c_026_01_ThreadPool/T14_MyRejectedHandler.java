@@ -1,6 +1,11 @@
 package com.mashibing.juc.c_026_01_ThreadPool;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class T14_MyRejectedHandler {
     public static void main(String[] args) {
@@ -17,7 +22,7 @@ public class T14_MyRejectedHandler {
             //log("r rejected")
             //save r kafka mysql redis
             //try 3 times
-            if(executor.getQueue().size() < 10000) {
+            if (executor.getQueue().size() < 10000) {
                 //try put again();
             }
         }

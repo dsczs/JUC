@@ -1,6 +1,14 @@
 package com.mashibing.juc.c_000;
 
 public class T02_HowToCreateThread {
+    public static void main(String[] args) {
+        new MyThread().start();
+        new Thread(new MyRun()).start();
+        new Thread(() -> {
+            System.out.println("Hello Lambda!");
+        }).start();
+    }
+
     static class MyThread extends Thread {
         @Override
         public void run() {
@@ -13,14 +21,6 @@ public class T02_HowToCreateThread {
         public void run() {
             System.out.println("Hello MyRun!");
         }
-    }
-
-    public static void main(String[] args) {
-        new MyThread().start();
-        new Thread(new MyRun()).start();
-        new Thread(()->{
-            System.out.println("Hello Lambda!");
-        }).start();
     }
 
 }

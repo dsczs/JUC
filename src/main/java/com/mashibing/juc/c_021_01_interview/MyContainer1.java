@@ -1,9 +1,9 @@
 /**
- * ÃæÊÔÌâ£ºÐ´Ò»¸ö¹Ì¶¨ÈÝÁ¿Í¬²½ÈÝÆ÷£¬ÓµÓÐputºÍget·½·¨£¬ÒÔ¼°getCount·½·¨£¬
- * ÄÜ¹»Ö§³Ö2¸öÉú²úÕßÏß³ÌÒÔ¼°10¸öÏû·ÑÕßÏß³ÌµÄ×èÈûµ÷ÓÃ
- * 
- * Ê¹ÓÃwaitºÍnotify/notifyAllÀ´ÊµÏÖ
- * 
+ * ï¿½ï¿½ï¿½ï¿½ï¿½â£ºÐ´Ò»ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½putï¿½ï¿½getï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½getCountï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½Ü¹ï¿½Ö§ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½Ô¼ï¿½10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * <p>
+ * Ê¹ï¿½ï¿½waitï¿½ï¿½notify/notifyAllï¿½ï¿½Êµï¿½ï¿½
+ *
  * @author mashibing
  */
 package com.mashibing.juc.c_021_01_interview;
@@ -12,60 +12,59 @@ import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 public class MyContainer1<T> {
-	final private LinkedList<T> lists = new LinkedList<>();
-	final private int MAX = 10; //×î¶à10¸öÔªËØ
-	private int count = 0;
-	
-	
-	public synchronized void put(T t) {
-		while(lists.size() == MAX) { //ÏëÏëÎªÊ²Ã´ÓÃwhile¶ø²»ÊÇÓÃif£¿
-			try {
-				this.wait(); //effective java
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		lists.add(t);
-		++count;
-		this.notifyAll(); //Í¨ÖªÏû·ÑÕßÏß³Ì½øÐÐÏû·Ñ
-	}
-	
-	public synchronized T get() {
-		T t = null;
-		while(lists.size() == 0) {
-			try {
-				this.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		t = lists.removeFirst();
-		count --;
-		this.notifyAll(); //Í¨ÖªÉú²úÕß½øÐÐÉú²ú
-		return t;
-	}
-	
-	public static void main(String[] args) {
-		MyContainer1<String> c = new MyContainer1<>();
-		//Æô¶¯Ïû·ÑÕßÏß³Ì
-		for(int i=0; i<10; i++) {
-			new Thread(()->{
-				for(int j=0; j<5; j++) System.out.println(c.get());
-			}, "c" + i).start();
-		}
-		
-		try {
-			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		//Æô¶¯Éú²úÕßÏß³Ì
-		for(int i=0; i<2; i++) {
-			new Thread(()->{
-				for(int j=0; j<25; j++) c.put(Thread.currentThread().getName() + " " + j);
-			}, "p" + i).start();
-		}
-	}
+    final private LinkedList<T> lists = new LinkedList<>();
+    final private int MAX = 10; //ï¿½ï¿½ï¿½10ï¿½ï¿½Ôªï¿½ï¿½
+    private int count = 0;
+
+    public static void main(String[] args) {
+        MyContainer1<String> c = new MyContainer1<>();
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                for (int j = 0; j < 5; j++) System.out.println(c.get());
+            }, "c" + i).start();
+        }
+
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
+        for (int i = 0; i < 2; i++) {
+            new Thread(() -> {
+                for (int j = 0; j < 25; j++) c.put(Thread.currentThread().getName() + " " + j);
+            }, "p" + i).start();
+        }
+    }
+
+    public synchronized void put(T t) {
+        while (lists.size() == MAX) { //ï¿½ï¿½ï¿½ï¿½ÎªÊ²Ã´ï¿½ï¿½whileï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ifï¿½ï¿½
+            try {
+                this.wait(); //effective java
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        lists.add(t);
+        ++count;
+        this.notifyAll(); //Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    }
+
+    public synchronized T get() {
+        T t = null;
+        while (lists.size() == 0) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        t = lists.removeFirst();
+        count--;
+        this.notifyAll(); //Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        return t;
+    }
 }

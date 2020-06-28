@@ -1,26 +1,27 @@
 /**
- * Ôø¾­µÄÃæÊÔÌâ£º£¨ÌÔ±¦£¿£©
- * ÊµÏÖÒ»¸öÈÝÆ÷£¬Ìá¹©Á½¸ö·½·¨£¬add£¬size
- * Ð´Á½¸öÏß³Ì£¬Ïß³Ì1Ìí¼Ó10¸öÔªËØµ½ÈÝÆ÷ÖÐ£¬Ïß³Ì2ÊµÏÖ¼à¿ØÔªËØµÄ¸öÊý£¬µ±¸öÊýµ½5¸öÊ±£¬Ïß³Ì2¸ø³öÌáÊ¾²¢½áÊø
- * 
- * ¸ølistsÌí¼ÓvolatileÖ®ºó£¬t2ÄÜ¹»½Óµ½Í¨Öª£¬µ«ÊÇ£¬t2Ïß³ÌµÄËÀÑ­»·ºÜÀË·Ñcpu£¬Èç¹û²»ÓÃËÀÑ­»·£¬¸ÃÔõÃ´×öÄØ£¿
- * 
- * ÕâÀïÊ¹ÓÃwaitºÍnotify×öµ½£¬wait»áÊÍ·ÅËø£¬¶ønotify²»»áÊÍ·ÅËø
- * ÐèÒª×¢ÒâµÄÊÇ£¬ÔËÓÃÕâÖÖ·½·¨£¬±ØÐëÒª±£Ö¤t2ÏÈÖ´ÐÐ£¬Ò²¾ÍÊÇÊ×ÏÈÈÃt2¼àÌý²Å¿ÉÒÔ
- * 
- * ÔÄ¶ÁÏÂÃæµÄ³ÌÐò£¬²¢·ÖÎöÊä³ö½á¹û
- * ¿ÉÒÔ¶Áµ½Êä³ö½á¹û²¢²»ÊÇsize=5Ê±t2ÍË³ö£¬¶øÊÇt1½áÊøÊ±t2²Å½ÓÊÕµ½Í¨Öª¶øÍË³ö
- * ÏëÏëÕâÊÇÎªÊ²Ã´£¿
- * 
- * notifyÖ®ºó£¬t1±ØÐëÊÍ·ÅËø£¬t2ÍË³öºó£¬Ò²±ØÐënotify£¬Í¨Öªt1¼ÌÐøÖ´ÐÐ
- * Õû¸öÍ¨ÐÅ¹ý³Ì±È½Ï·±Ëö
- * 
- * Ê¹ÓÃLatch£¨ÃÅãÅ£©Ìæ´úwait notifyÀ´½øÐÐÍ¨Öª
- * ºÃ´¦ÊÇÍ¨ÐÅ·½Ê½¼òµ¥£¬Í¬Ê±Ò²¿ÉÒÔÖ¸¶¨µÈ´ýÊ±¼ä
- * Ê¹ÓÃawaitºÍcountdown·½·¨Ìæ´úwaitºÍnotify
- * CountDownLatch²»Éæ¼°Ëø¶¨£¬µ±countµÄÖµÎªÁãÊ±µ±Ç°Ïß³Ì¼ÌÐøÔËÐÐ
- * µ±²»Éæ¼°Í¬²½£¬Ö»ÊÇÉæ¼°Ïß³ÌÍ¨ÐÅµÄÊ±ºò£¬ÓÃsynchronized + wait/notify¾ÍÏÔµÃÌ«ÖØÁË
- * ÕâÊ±Ó¦¸Ã¿¼ÂÇcountdownlatch/cyclicbarrier/semaphore
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£ºï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Êµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½addï¿½ï¿½size
+ * Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì£ï¿½ï¿½ß³ï¿½1ï¿½ï¿½ï¿½10ï¿½ï¿½Ôªï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ß³ï¿½2Êµï¿½Ö¼ï¿½ï¿½Ôªï¿½ØµÄ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½5ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ß³ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * <p>
+ * ï¿½ï¿½listsï¿½ï¿½ï¿½volatileÖ®ï¿½ï¿½t2ï¿½Ü¹ï¿½ï¿½Óµï¿½Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½Ç£ï¿½t2ï¿½ß³Ìµï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½cpuï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½Ø£ï¿½
+ * <p>
+ * ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½waitï¿½ï¿½notifyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½waitï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½notifyï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½
+ * ï¿½ï¿½Òª×¢ï¿½ï¿½ï¿½ï¿½Ç£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ö¤t2ï¿½ï¿½Ö´ï¿½Ð£ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½t2ï¿½ï¿½ï¿½ï¿½ï¿½Å¿ï¿½ï¿½ï¿½
+ * <p>
+ * ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ò£¬²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½size=5Ê±t2ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½t1ï¿½ï¿½ï¿½ï¿½Ê±t2ï¿½Å½ï¿½ï¿½Õµï¿½Í¨Öªï¿½ï¿½ï¿½Ë³ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÊ²Ã´ï¿½ï¿½
+ * <p>
+ * notifyÖ®ï¿½ï¿½t1ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½t2ï¿½Ë³ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½notifyï¿½ï¿½Í¨Öªt1ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½Í¨ï¿½Å¹ï¿½ï¿½Ì±È½Ï·ï¿½ï¿½ï¿½
+ * <p>
+ * Ê¹ï¿½ï¿½Latchï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½wait notifyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öª
+ * ï¿½Ã´ï¿½ï¿½ï¿½Í¨ï¿½Å·ï¿½Ê½ï¿½òµ¥£ï¿½Í¬Ê±Ò²ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½È´ï¿½Ê±ï¿½ï¿½
+ * Ê¹ï¿½ï¿½awaitï¿½ï¿½countdownï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½waitï¿½ï¿½notify
+ * CountDownLatchï¿½ï¿½ï¿½æ¼°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½countï¿½ï¿½ÖµÎªï¿½ï¿½Ê±ï¿½ï¿½Ç°ï¿½ß³Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½æ¼°Í¬ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½æ¼°ï¿½ß³ï¿½Í¨ï¿½Åµï¿½Ê±ï¿½ï¿½ï¿½ï¿½synchronized + wait/notifyï¿½ï¿½ï¿½Ôµï¿½Ì«ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½Ê±Ó¦ï¿½Ã¿ï¿½ï¿½ï¿½countdownlatch/cyclicbarrier/semaphore
+ *
  * @author mashibing
  */
 package com.mashibing.juc.c_020_01_Interview;
@@ -32,63 +33,63 @@ import java.util.concurrent.TimeUnit;
 
 public class T05_CountDownLatch {
 
-	// Ìí¼Óvolatile£¬Ê¹t2ÄÜ¹»µÃµ½Í¨Öª
-	volatile List lists = new ArrayList();
+    // ï¿½ï¿½ï¿½volatileï¿½ï¿½Ê¹t2ï¿½Ü¹ï¿½ï¿½Ãµï¿½Í¨Öª
+    volatile List lists = new ArrayList();
 
-	public void add(Object o) {
-		lists.add(o);
-	}
+    public static void main(String[] args) {
+        T05_CountDownLatch c = new T05_CountDownLatch();
 
-	public int size() {
-		return lists.size();
-	}
+        CountDownLatch latch = new CountDownLatch(1);
 
-	public static void main(String[] args) {
-		T05_CountDownLatch c = new T05_CountDownLatch();
+        new Thread(() -> {
+            System.out.println("t2ï¿½ï¿½ï¿½ï¿½");
+            if (c.size() != 5) {
+                try {
+                    latch.await();
 
-		CountDownLatch latch = new CountDownLatch(1);
+                    //Ò²ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½È´ï¿½Ê±ï¿½ï¿½
+                    //latch.await(5000, TimeUnit.MILLISECONDS);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("t2 ï¿½ï¿½ï¿½ï¿½");
 
-		new Thread(() -> {
-			System.out.println("t2Æô¶¯");
-			if (c.size() != 5) {
-				try {
-					latch.await();
-					
-					//Ò²¿ÉÒÔÖ¸¶¨µÈ´ýÊ±¼ä
-					//latch.await(5000, TimeUnit.MILLISECONDS);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			System.out.println("t2 ½áÊø");
+        }, "t2").start();
 
-		}, "t2").start();
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
 
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
+        new Thread(() -> {
+            System.out.println("t1ï¿½ï¿½ï¿½ï¿½");
+            for (int i = 0; i < 10; i++) {
+                c.add(new Object());
+                System.out.println("add " + i);
 
-		new Thread(() -> {
-			System.out.println("t1Æô¶¯");
-			for (int i = 0; i < 10; i++) {
-				c.add(new Object());
-				System.out.println("add " + i);
-
-				if (c.size() == 5) {
-					// ´ò¿ªÃÅãÅ£¬ÈÃt2µÃÒÔÖ´ÐÐ
-					latch.countDown();
-				}
+                if (c.size() == 5) {
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½t2ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
+                    latch.countDown();
+                }
 
 				/*try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}*/
-			}
+            }
 
-		}, "t1").start();
+        }, "t1").start();
 
-	}
+    }
+
+    public void add(Object o) {
+        lists.add(o);
+    }
+
+    public int size() {
+        return lists.size();
+    }
 }

@@ -1,9 +1,32 @@
 package com.mashibing.juc.c_026_01_ThreadPool;
 
 import java.io.IOException;
-import java.util.concurrent.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class T05_00_HelloThreadPool {
+
+    public static void main(String[] args) {
+        ThreadPoolExecutor tpe = new ThreadPoolExecutor(2, 4,
+                60, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<Runnable>(4),
+                Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.CallerRunsPolicy());
+
+        for (int i = 0; i < 8; i++) {
+            tpe.execute(new Task(i));
+        }
+
+        System.out.println(tpe.getQueue());
+
+        tpe.execute(new Task(100));
+
+        System.out.println(tpe.getQueue());
+
+        tpe.shutdown();
+    }
 
     static class Task implements Runnable {
         private int i;
@@ -28,25 +51,5 @@ public class T05_00_HelloThreadPool {
                     "i=" + i +
                     '}';
         }
-    }
-
-    public static void main(String[] args) {
-        ThreadPoolExecutor tpe = new ThreadPoolExecutor(2, 4,
-                60, TimeUnit.SECONDS,
-                new ArrayBlockingQueue<Runnable>(4),
-                Executors.defaultThreadFactory(),
-                new ThreadPoolExecutor.CallerRunsPolicy());
-
-        for (int i = 0; i < 8; i++) {
-            tpe.execute(new Task(i));
-        }
-
-        System.out.println(tpe.getQueue());
-
-        tpe.execute(new Task(100));
-
-        System.out.println(tpe.getQueue());
-
-        tpe.shutdown();
     }
 }

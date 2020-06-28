@@ -3,21 +3,21 @@ package com.mashibing.juc.c_025;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
-public class T08_SynchronusQueue { //ÈÝÁ¿Îª0
-	public static void main(String[] args) throws InterruptedException {
-		BlockingQueue<String> strs = new SynchronousQueue<>();
-		
-		new Thread(()->{
-			try {
-				System.out.println(strs.take());
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}).start();
+public class T08_SynchronusQueue { //ï¿½ï¿½ï¿½ï¿½Îª0
+    public static void main(String[] args) throws InterruptedException {
+        BlockingQueue<String> strs = new SynchronousQueue<>();
 
-		strs.put("aaa"); //×èÈûµÈ´ýÏû·ÑÕßÏû·Ñ
-		//strs.put("bbb");
-		//strs.add("aaa");
-		System.out.println(strs.size());
-	}
+        new Thread(() -> {
+            try {
+                System.out.println(strs.take());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        strs.put("aaa"); //ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //strs.put("bbb");
+        //strs.add("aaa");
+        System.out.println(strs.size());
+    }
 }

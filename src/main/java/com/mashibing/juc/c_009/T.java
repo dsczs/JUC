@@ -1,6 +1,7 @@
 /**
- * 一个同步方法可以调用另外一个同步方法，一个线程已经拥有某个对象的锁，再次申请的时候仍然会得到该对象的锁.
- * 也就是说synchronized获得的锁是可重入的
+ * 一锟斤拷同锟斤拷锟斤拷锟斤拷锟斤拷锟皆碉拷锟斤拷锟斤拷锟斤拷一锟斤拷同锟斤拷锟斤拷锟斤拷锟斤拷一锟斤拷锟竭筹拷锟窖撅拷拥锟斤拷某锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷俅锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷然锟斤拷玫锟斤拷枚锟斤拷锟斤拷锟斤拷.
+ * 也锟斤拷锟斤拷说synchronized锟斤拷玫锟斤拷锟斤拷强锟斤拷锟斤拷锟斤拷
+ *
  * @author mashibing
  */
 package com.mashibing.juc.c_009;
@@ -8,27 +9,27 @@ package com.mashibing.juc.c_009;
 import java.util.concurrent.TimeUnit;
 
 public class T {
-	synchronized void m1() {
-		System.out.println("m1 start");
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		m2();
-		System.out.println("m1 end");
-	}
-	
-	synchronized void m2() {
-		try {
-			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("m2");
-	}
+    public static void main(String[] args) {
+        new T().m1();
+    }
 
-	public static void main(String[] args) {
-		new T().m1();
-	}
+    synchronized void m1() {
+        System.out.println("m1 start");
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        m2();
+        System.out.println("m1 end");
+    }
+
+    synchronized void m2() {
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("m2");
+    }
 }

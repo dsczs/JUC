@@ -1,33 +1,32 @@
 /**
- * ²»ÒªÒÔ×Ö·û´®³£Á¿×÷ÎªËø¶¨¶ÔÏó
- * ÔÚÏÂÃæµÄÀý×ÓÖÐ£¬m1ºÍm2ÆäÊµËø¶¨µÄÊÇÍ¬Ò»¸ö¶ÔÏó
- * ÕâÖÖÇé¿ö»¹»á·¢Éú±È½Ï¹îÒìµÄÏÖÏó£¬±ÈÈçÄãÓÃµ½ÁËÒ»¸öÀà¿â£¬ÔÚ¸ÃÀà¿âÖÐ´úÂëËø¶¨ÁË×Ö·û´®¡°Hello¡±£¬
- * µ«ÊÇÄã¶Á²»µ½Ô´Âë£¬ËùÒÔÄãÔÚ×Ô¼ºµÄ´úÂëÖÐÒ²Ëø¶¨ÁË"Hello",ÕâÊ±ºò¾ÍÓÐ¿ÉÄÜ·¢Éú·Ç³£¹îÒìµÄËÀËø×èÈû£¬
- * ÒòÎªÄãµÄ³ÌÐòºÍÄãÓÃµ½µÄÀà¿â²»¾­Òâ¼äÊ¹ÓÃÁËÍ¬Ò»°ÑËø
- * 
+ * ï¿½ï¿½Òªï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½m1ï¿½ï¿½m2ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á·¢ï¿½ï¿½ï¿½È½Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½â£¬ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Helloï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"Hello",ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ü·ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½Îªï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½â²»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½
+ * <p>
  * jetty
- * 
+ *
  * @author mashibing
  */
 package com.mashibing.juc.c_017_MoreAboutSync;
 
 public class DoNotLockString {
-	
-	String s1 = "Hello";
-	String s2 = "Hello";
 
-	void m1() {
-		synchronized(s1) {
-			
-		}
-	}
-	
-	void m2() {
-		synchronized(s2) {
-			
-		}
-	}
+    String s1 = "Hello";
+    String s2 = "Hello";
 
-	
+    void m1() {
+        synchronized (s1) {
+
+        }
+    }
+
+    void m2() {
+        synchronized (s2) {
+
+        }
+    }
+
 
 }

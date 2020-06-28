@@ -20,9 +20,9 @@ public class T08_TestPhaser {
 
         phaser.bulkRegister(5);
 
-        for(int i=0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
             final int nameIndex = i;
-            new Thread(()->{
+            new Thread(() -> {
 
                 Person p = new Person("person " + nameIndex);
                 p.arrive();

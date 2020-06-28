@@ -1,7 +1,8 @@
 /**
- * Ëø¶¨Ä³¶ÔÏóo£¬Èç¹ûoµÄÊôÐÔ·¢Éú¸Ä±ä£¬²»Ó°ÏìËøµÄÊ¹ÓÃ
- * µ«ÊÇÈç¹ûo±ä³ÉÁíÍâÒ»¸ö¶ÔÏó£¬ÔòËø¶¨µÄ¶ÔÏó·¢Éú¸Ä±ä
- * Ó¦¸Ã±ÜÃâ½«Ëø¶¨¶ÔÏóµÄÒýÓÃ±ä³ÉÁíÍâµÄ¶ÔÏó
+ * ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ä±ä£¬ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
+ * Ó¦ï¿½Ã±ï¿½ï¿½â½«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½
+ *
  * @author mashibing
  */
 package com.mashibing.juc.c_017_MoreAboutSync;
@@ -10,43 +11,42 @@ import java.util.concurrent.TimeUnit;
 
 
 public class SyncSameObject {
-	
-	/*final*/ Object o = new Object();
 
-	void m() {
-		synchronized(o) {
-			while(true) {
-				try {
-					TimeUnit.SECONDS.sleep(1);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				System.out.println(Thread.currentThread().getName());
-				
-				
-			}
-		}
-	}
-	
-	public static void main(String[] args) {
-		SyncSameObject t = new SyncSameObject();
-		//Æô¶¯µÚÒ»¸öÏß³Ì
-		new Thread(t::m, "t1").start();
-		
-		try {
-			TimeUnit.SECONDS.sleep(3);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		//´´½¨µÚ¶þ¸öÏß³Ì
-		Thread t2 = new Thread(t::m, "t2");
-		
-		t.o = new Object(); //Ëø¶ÔÏó·¢Éú¸Ä±ä£¬ËùÒÔt2Ïß³ÌµÃÒÔÖ´ÐÐ£¬Èç¹û×¢ÊÍµôÕâ¾ä»°£¬Ïß³Ì2½«ÓÀÔ¶µÃ²»µ½Ö´ÐÐ»ú»á
-		
-		t2.start();
-		
-	}
+    /*final*/ Object o = new Object();
 
-	
+    public static void main(String[] args) {
+        SyncSameObject t = new SyncSameObject();
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß³ï¿½
+        new Thread(t::m, "t1").start();
+
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ß³ï¿½
+        Thread t2 = new Thread(t::m, "t2");
+
+        t.o = new Object(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ä£¬ï¿½ï¿½ï¿½ï¿½t2ï¿½ß³Ìµï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½ï¿½ï¿½ï¿½×¢ï¿½Íµï¿½ï¿½ï¿½ä»°ï¿½ï¿½ï¿½ß³ï¿½2ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ã²ï¿½ï¿½ï¿½Ö´ï¿½Ð»ï¿½ï¿½ï¿½
+
+        t2.start();
+
+    }
+
+    void m() {
+        synchronized (o) {
+            while (true) {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread().getName());
+
+
+            }
+        }
+    }
+
 
 }

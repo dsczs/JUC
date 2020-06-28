@@ -1,18 +1,18 @@
 /**
- * ÓÐNÕÅ»ð³µÆ±£¬Ã¿ÕÅÆ±¶¼ÓÐÒ»¸ö±àºÅ
- * Í¬Ê±ÓÐ10¸ö´°¿Ú¶ÔÍâÊÛÆ±
- * ÇëÐ´Ò»¸öÄ£Äâ³ÌÐò
- * 
- * ·ÖÎöÏÂÃæµÄ³ÌÐò¿ÉÄÜ»á²úÉúÄÄÐ©ÎÊÌâ£¿
- * ÖØ¸´ÏúÊÛ£¿³¬Á¿ÏúÊÛ£¿
- * 
- * Ê¹ÓÃVector»òÕßCollections.synchronizedXXX
- * ·ÖÎöÒ»ÏÂ£¬ÕâÑùÄÜ½â¾öÎÊÌâÂð£¿
- * 
- * ¾ÍËã²Ù×÷AºÍB¶¼ÊÇÍ¬²½µÄ£¬µ«AºÍB×é³ÉµÄ¸´ºÏ²Ù×÷Ò²Î´±ØÊÇÍ¬²½µÄ£¬ÈÔÈ»ÐèÒª×Ô¼º½øÐÐÍ¬²½
- * ¾ÍÏñÕâ¸ö³ÌÐò£¬ÅÐ¶ÏsizeºÍ½øÐÐremove±ØÐëÊÇÒ»Õû¸öµÄÔ­×Ó²Ù×÷
- * 
- * @author ÂíÊ¿±ø
+ * ï¿½ï¿½Nï¿½Å»ï¿½Æ±ï¿½ï¿½Ã¿ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Í¬Ê±ï¿½ï¿½10ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½Æ±
+ * ï¿½ï¿½Ð´Ò»ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½
+ * <p>
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½Ü»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½â£¿
+ * ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½Û£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û£ï¿½
+ * <p>
+ * Ê¹ï¿½ï¿½Vectorï¿½ï¿½ï¿½ï¿½Collections.synchronizedXXX
+ * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * <p>
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Aï¿½ï¿½Bï¿½ï¿½ÉµÄ¸ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ò²Î´ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½È»ï¿½ï¿½Òªï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½sizeï¿½Í½ï¿½ï¿½ï¿½removeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½Ó²ï¿½ï¿½ï¿½
+ *
+ * @author ï¿½ï¿½Ê¿ï¿½ï¿½
  */
 package com.mashibing.juc.c_024_FromVectorToQueue;
 
@@ -21,31 +21,31 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TicketSeller3 {
-	static List<String> tickets = new LinkedList<>();
-	
-	
-	static {
-		for(int i=0; i<1000; i++) tickets.add("Æ± ±àºÅ£º" + i);
-	}
-	
-	public static void main(String[] args) {
-		
-		for(int i=0; i<10; i++) {
-			new Thread(()->{
-				while(true) {
-					synchronized(tickets) {
-						if(tickets.size() <= 0) break;
-						
-						try {
-							TimeUnit.MILLISECONDS.sleep(10);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-						
-						System.out.println("ÏúÊÛÁË--" + tickets.remove(0));
-					}
-				}
-			}).start();
-		}
-	}
+    static List<String> tickets = new LinkedList<>();
+
+
+    static {
+        for (int i = 0; i < 1000; i++) tickets.add("Æ± ï¿½ï¿½Å£ï¿½" + i);
+    }
+
+    public static void main(String[] args) {
+
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                while (true) {
+                    synchronized (tickets) {
+                        if (tickets.size() <= 0) break;
+
+                        try {
+                            TimeUnit.MILLISECONDS.sleep(10);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--" + tickets.remove(0));
+                    }
+                }
+            }).start();
+        }
+    }
 }

@@ -1,10 +1,10 @@
 /**
- * ÃæÊÔÌâ£ºÄ£ÄâÒøÐÐÕË»§
- * ¶ÔÒµÎñÐ´·½·¨¼ÓËø
- * ¶ÔÒµÎñ¶Á·½·¨²»¼ÓËø
- * ÕâÑùÐÐ²»ÐÐ£¿
- *
- * ÈÝÒ×²úÉúÔà¶ÁÎÊÌâ£¨dirtyRead£©
+ * ï¿½ï¿½ï¿½ï¿½ï¿½â£ºÄ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½
+ * ï¿½ï¿½Òµï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½Ð£ï¿½
+ * <p>
+ * ï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£¨dirtyReadï¿½ï¿½
  */
 
 package com.mashibing.juc.c_008;
@@ -12,45 +12,44 @@ package com.mashibing.juc.c_008;
 import java.util.concurrent.TimeUnit;
 
 public class Account {
-	String name;
-	double balance;
-	
-	public synchronized void set(String name, double balance) {
-		this.name = name;
+    String name;
+    double balance;
 
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+    public static void main(String[] args) {
+        Account a = new Account();
+        new Thread(() -> a.set("zhangsan", 100.0)).start();
 
-		
-		this.balance = balance;
-	}
-	
-	public /*synchronized*/ double getBalance(String name) {
-		return this.balance;
-	}
-	
-	
-	public static void main(String[] args) {
-		Account a = new Account();
-		new Thread(()->a.set("zhangsan", 100.0)).start();
-		
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println(a.getBalance("zhangsan"));
-		
-		try {
-			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println(a.getBalance("zhangsan"));
-	}
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(a.getBalance("zhangsan"));
+
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(a.getBalance("zhangsan"));
+    }
+
+    public synchronized void set(String name, double balance) {
+        this.name = name;
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        this.balance = balance;
+    }
+
+    public /*synchronized*/ double getBalance(String name) {
+        return this.balance;
+    }
 }
